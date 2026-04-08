@@ -23,5 +23,5 @@ export const RawDataSchema = SchemaFactory.createForClass(RawData);
 // Compound unique index — biar ga duplikat
 RawDataSchema.index(
   { enodebId: 1, cellId: 1, resultTime: 1 },
-  { unique: true }
+  { unique: true },
 );

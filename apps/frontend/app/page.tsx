@@ -6,8 +6,8 @@ export default function Index() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/home"); // langsung redirect ke /home
+    router.replace("/home");
   }, [router]);
 
-  return null; // atau loading spinner
+  return null;
 }

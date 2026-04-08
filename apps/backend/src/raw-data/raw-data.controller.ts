@@ -14,7 +14,10 @@ import { RawDataService } from './raw-data.service';
 import { RawData } from './raw-data.schema';
 import csvParser = require('csv-parser');
 import { Readable } from 'stream';
-
+import { GetGraphDto } from './dto/get-graph.dto';
+import { GraphResponseDto } from './dto/graph-response.dto';
+import { plainToInstance } from 'class-transformer';
+import { SkipResponse } from 'src/common/decorators/skip-response.decorators';
 @Controller('raw-data')
 export class RawDataController {
   constructor(private readonly rawDataService: RawDataService) {}
@@ -60,10 +63,28 @@ export class RawDataController {
 
     try {
       const res = await this.rawDataService.createMany(results);
+
+      const inserted = res.upsertedCount || 0;
+      const matched = res.matchedCount || 0;
+
+      let message = '';
+
+      if (inserted > 0 && matched === 0) {
+        message = `Successfully inserted ${inserted} new records`;
+      } else if (inserted === 0 && matched > 0) {
+        message = `All data already exists (${matched} duplicates skipped)`;
+      } else {
+        message = `Processed ${inserted} new and ${matched} existing records`;
+      }
+
       return {
-        total_parsed: results.length + skippedRows,
-        inserted: res.upsertedCount || 0,
-        skipped: skippedRows,
+        message,
+        data: {
+          total_parsed: results.length + skippedRows,
+          inserted,
+          matched,
+          skipped: skippedRows,
+        },
       };
     } catch (err) {
       console.error(err);
@@ -73,33 +94,12 @@ export class RawDataController {
 
   // ───── GET /raw-data/graph ─────
   @Get('graph')
-  async getGraph(
-    @Query('enodebId') enodebId: string,
-    @Query('cellId') cellId: string,
-    @Query('startDate') startDate: string,
-    @Query('endDate') endDate: string,
-  ) {
-    if (!enodebId || !cellId || !startDate || !endDate) {
-      throw new BadRequestException('Missing required query parameters');
-    }
+  @SkipResponse()
+  async getGraph(@Query() query: GetGraphDto) {
+    const data = await this.rawDataService.getGraphData(query);
 
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-
-    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
-      throw new BadRequestException('Invalid date format');
-    }
-
-    const data = await this.rawDataService.findByEnodebCellAndDateRange(
-      enodebId,
-      cellId,
-      start,
-      end,
-    );
-
-    return data.map((row) => ({
-      resultTime: row.resultTime,
-      availability: ((row.availDur ?? 0) / 900) * 100,
-    }));
+    return plainToInstance(GraphResponseDto, data, {
+      excludeExtraneousValues: true,
+    });
   }
 }
