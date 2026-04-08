@@ -1,4 +1,3 @@
-import { ChartConfig } from "@/components/ui/chart";
 import { LineProps } from "recharts";
 
 export interface ModalProps {
@@ -36,8 +35,13 @@ export type GraphApiResponse = {
 };
 
 export type GraphQueryParams = {
-  enodebId: string;
-  cellId: string;
-  startDate: string;
-  endDate: string;
+  enodebId?: string;
+  cellId?: string;
+  startDate?: string;
+  endDate?: string;
 };
+export interface SkeletonChartProps {
+  titleHeight?: number;
+  descriptionHeight?: number;
+  chartHeight?: number;
+}

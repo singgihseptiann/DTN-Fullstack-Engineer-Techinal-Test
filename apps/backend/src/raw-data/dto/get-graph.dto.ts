@@ -1,22 +1,22 @@
-import { IsString, IsNotEmpty, IsDate } from 'class-validator';
+import { IsString, IsOptional, IsDate } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class GetGraphDto {
+  @IsOptional()
   @IsString()
-  @IsNotEmpty({ message: 'enodebId is required' })
-  enodebId!: string;
+  enodebId?: string;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty({ message: 'cellId is required' })
-  cellId!: string;
+  cellId?: string;
 
+  @IsOptional()
   @Type(() => Date)
   @IsDate()
-  @IsNotEmpty({ message: 'startDate is required' })
-  startDate!: Date;
+  startDate?: Date;
 
+  @IsOptional()
   @Type(() => Date)
   @IsDate()
-  @IsNotEmpty({ message: 'endDate is required' })
-  endDate!: Date;
+  endDate?: Date;
 }

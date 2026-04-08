@@ -17,6 +17,8 @@ async function bootstrap() {
       },
     }),
   );
+  // Global prefix (biar semua route ada prefix /api)
+  app.setGlobalPrefix('api');
 
   // ✅ Optional: enable CORS (biar Next.js lo bisa akses)
   app.enableCors();

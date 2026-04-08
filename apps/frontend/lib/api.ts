@@ -1,7 +1,7 @@
 import { FetchOptions } from "@/types";
 import { buildQueryString } from "./query-params";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://localhost:3001/api";
 
 export async function apiRequest<T = any>(endpoint: string, { method = "GET", body, headers = {}, queryParams }: FetchOptions = {}): Promise<T> {
   const queryString = buildQueryString(queryParams);

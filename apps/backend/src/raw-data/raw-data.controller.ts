@@ -6,6 +6,7 @@ import {
   UseInterceptors,
   BadRequestException,
   Query,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
@@ -86,9 +87,9 @@ export class RawDataController {
           skipped: skippedRows,
         },
       };
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      throw new BadRequestException(err.message);
+      throw new InternalServerErrorException('Failed to upload data');
     }
   }
 
