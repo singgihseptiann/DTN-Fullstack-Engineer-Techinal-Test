@@ -6,7 +6,7 @@ export default function Index() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/home");
+    router.replace("/graph");
   }, [router]);
 
   return null;
