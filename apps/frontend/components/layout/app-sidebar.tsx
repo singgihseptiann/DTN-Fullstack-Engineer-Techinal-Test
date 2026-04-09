@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { PieChart } from "lucide-react";
+import { PieChart, Upload } from "lucide-react";
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "@/components/ui/sidebar";
 import { TeamSwitcher } from "./team-switcher";
@@ -22,6 +22,13 @@ const data = {
     },
   ],
   navMain: [
+    {
+      title: "Upload",
+      url: "/upload",
+      icon: Upload,
+      isActive: false,
+      items: [],
+    },
     {
       title: "Graph",
       url: "/graph",

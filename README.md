@@ -25,9 +25,9 @@ Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman 
 
 ## ✨ Fitur Utama
 
-1. **Unggah Data CSV**: Mengunggah file CSV yang berisi data eNodeB ID, Local Cell ID, Result Time, dan Availability Duration.
-2. **Pemrosesan Data Otomatis**: Backend secara otomatis mem-parsing CSV dan menangani duplikasi data menggunakan mekanisme *upsert*.
-3. **Dashboard Visualisasi**: Menampilkan data dalam bentuk grafik interaktif yang memudahkan analisis tren ketersediaan sel.
+1. **Unggah Data CSV**: Halaman khusus untuk mengunggah file CSV yang berisi data eNodeB ID, Local Cell ID, Result Time, dan Availability Duration.
+2. **Dashboard Visualisasi**: Halaman grafik interaktif untuk menganalisis tren ketersediaan sel berdasarkan data yang telah diunggah.
+3. **Pemrosesan Data Otomatis**: Backend secara otomatis mem-parsing CSV dan menangani duplikasi data menggunakan mekanisme *upsert*.
 4. **Manajemen Workspace**: Menggunakan *npm workspaces* untuk pengelolaan monorepo yang rapi.
 
 ---
