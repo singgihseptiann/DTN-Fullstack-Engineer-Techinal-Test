@@ -2,7 +2,7 @@
 
 Proyek ini adalah aplikasi fullstack yang dirancang untuk mengelola dan memvisualisasikan data mentah dari file CSV, khususnya data telekomunikasi terkait ketersediaan sel (Cell Availability) pada eNodeB.
 
-## 🚀 Teknologi Utama
+##  Teknologi Utama
 
 Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman pengembang yang optimal:
 
@@ -23,7 +23,7 @@ Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman 
 
 ---
 
-## ✨ Fitur Utama
+##  Fitur Utama
 
 1. **Unggah Data CSV**: Halaman khusus untuk mengunggah file CSV yang berisi data eNodeB ID, Local Cell ID, Result Time, dan Availability Duration.
 2. **Dashboard Visualisasi**: Halaman grafik interaktif untuk menganalisis tren ketersediaan sel berdasarkan data yang telah diunggah.
@@ -32,7 +32,7 @@ Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman 
 
 ---
 
-## 🛠️ Cara Menjalankan Proyek
+##  Cara Menjalankan Proyek
 
 ### Prasyarat
 - [Node.js](https://nodejs.org/) (versi terbaru direkomendasikan)
@@ -57,7 +57,7 @@ Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman 
 
 ---
 
-## 📁 Struktur Folder
+##  Struktur Folder
 
 ```text
 .
@@ -69,6 +69,6 @@ Proyek ini dibangun menggunakan teknologi terbaru untuk performa dan pengalaman 
 └── README.md         # Dokumentasi ini
 ```
 
-## 📝 Catatan Penting
+##  Catatan Penting
 - Pastikan MongoDB Anda sudah berjalan di `localhost:27017` sebelum menjalankan `npm run dev` agar koneksi database berhasil.
 - Backend menggunakan port **3001** dengan global prefix **/api**.
